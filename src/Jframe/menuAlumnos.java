@@ -184,6 +184,7 @@ public class menuAlumnos extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        try{
         int legajo = Integer.parseInt(jTlegajo.getText());
         String apellido = jTapellido.getText();
         String nombre = jTnombre.getText();
@@ -194,7 +195,10 @@ public class menuAlumnos extends javax.swing.JInternalFrame {
         
         
         JOptionPane.showMessageDialog(null, "estudiantre agregado: "+jTapellido.getText()+" "+jTnombre.getText());
-        
+        } catch(NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(null, "Por favor ingrese un numero de legajo"," Error de formato", JOptionPane.ERROR_MESSAGE);
+        }
                 
     }//GEN-LAST:event_jButton1ActionPerformed
 
