@@ -4,17 +4,24 @@
  */
 package Jframe;
 
+import Data.AlumnoData;
+import javax.swing.JOptionPane;
+import tp.pkg4.gp14.Alumno;
+
 /**
  *
  * @author carlo
  */
 public class menuAlumnos extends javax.swing.JInternalFrame {
-
+       
+    private AlumnoData ad;
     /**
      * Creates new form Alumnos
      */
     public menuAlumnos() {
         initComponents();
+         
+        ad = new AlumnoData();
     }
 
     /**
@@ -56,6 +63,11 @@ public class menuAlumnos extends javax.swing.JInternalFrame {
         jButton1.setForeground(new java.awt.Color(255, 0, 51));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
         jButton1.setText("Guardar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jBnewfile.setForeground(new java.awt.Color(255, 0, 51));
         jBnewfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/newarchive.png"))); // NOI18N
@@ -169,6 +181,22 @@ public class menuAlumnos extends javax.swing.JInternalFrame {
     private void jBexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBexitActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jBexitActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int legajo = Integer.parseInt(jTlegajo.getText());
+        String apellido = jTapellido.getText();
+        String nombre = jTnombre.getText();
+        
+        Alumno A = new Alumno(legajo, apellido, nombre);
+        AlumnoData ad = new AlumnoData();
+        ad.guardarA(A);
+        
+        
+        JOptionPane.showMessageDialog(null, "estudiantre agregado: "+jTapellido.getText()+" "+jTnombre.getText());
+        
+                
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

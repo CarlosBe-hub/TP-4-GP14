@@ -4,19 +4,24 @@
  */
 package Jframe;
 
+import java.util.HashSet;
 import tp.pkg4.gp14.Alumno;
+import tp.pkg4.gp14.Materia;
 
 /**
  *
  * @author carlo
  */
 public class menuPrincipal extends javax.swing.JFrame {
-
+public static HashSet<Alumno> estudiantes = new HashSet<>();
+public static HashSet<Materia> materias = new HashSet<>();
     /**
      * Creates new form Menuprincipal
      */
     public menuPrincipal() {
         initComponents();
+        
+        
     }
 
     /**
@@ -192,4 +197,7 @@ public class menuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem opFormAlumno;
     // End of variables declaration//GEN-END:variables
+
+    
+  
 }

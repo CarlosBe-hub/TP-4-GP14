@@ -4,17 +4,24 @@
  */
 package Jframe;
 
+import Data.MateriaData;
+import javax.swing.JOptionPane;
+import tp.pkg4.gp14.Materia;
+
 /**
  *
  * @author carlo
  */
 public class menuMaterias extends javax.swing.JInternalFrame {
 
+    private MateriaData md;
     /**
      * Creates new form Materias
      */
     public menuMaterias() {
         initComponents();
+        
+        md = new MateriaData();
     }
 
     /**
@@ -55,6 +62,11 @@ public class menuMaterias extends javax.swing.JInternalFrame {
         jSave.setForeground(new java.awt.Color(255, 0, 51));
         jSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
         jSave.setText("Guardar");
+        jSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSaveActionPerformed(evt);
+            }
+        });
 
         jNew.setForeground(new java.awt.Color(255, 0, 51));
         jNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/newarchive.png"))); // NOI18N
@@ -169,6 +181,19 @@ public class menuMaterias extends javax.swing.JInternalFrame {
        jtCodigomat.setText("");
        jtNommateria.setText("");
     }//GEN-LAST:event_jNewActionPerformed
+
+    private void jSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSaveActionPerformed
+        // TODO add your handling code here:
+        int codigo = Integer.parseInt(jtCodigomat.getText());
+        String materia = jtNommateria.getText();
+        int anio = Integer.parseInt(jtAnio.getText());
+        
+        Materia M = new Materia(codigo, materia, anio);
+        MateriaData md = new MateriaData();
+        md.guardarM(M);
+        
+        JOptionPane.showMessageDialog(this, "materia agregada: "+jtNommateria.getText());
+    }//GEN-LAST:event_jSaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
