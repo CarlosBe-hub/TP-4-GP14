@@ -15,7 +15,7 @@ public class Alumno {
     private int nrolegajo;
     private String apellido;
     private String nombre;
-    private Set<Materia> materias;
+    private Set <Materia> materias;
 
     public Alumno(int nrolegajo, String apellido, String nombre) {
         this.nrolegajo = nrolegajo;
@@ -59,7 +59,6 @@ public class Alumno {
         }
         else{
             materias.add(materia);
-            System.out.println("Materia agregada: " +materia);
         }
     
     }
