@@ -20,6 +20,8 @@ public class AlumnoData {
     public void guardarA(Alumno a) {
         a.setNrolegajo(listaA.size());
         listaA.add(a);
+        
+        System.out.println("");
     }
 
     public ArrayList<Alumno> obtenerA() {
@@ -31,5 +33,6 @@ public class AlumnoData {
             System.out.println(alumno.toString());
         }
     }
+    
     
 }

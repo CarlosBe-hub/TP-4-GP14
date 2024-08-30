@@ -144,7 +144,7 @@ public static HashSet<Materia> materias = new HashSet<>();
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        menuInscripcion minscripcion = new menuInscripcion();
+        menuInscripcion minscripcion = new menuInscripcion(estudiantes, materias);
         minscripcion.setVisible(true);
         escritorio.add(minscripcion);
         escritorio.moveToFront(minscripcion); 

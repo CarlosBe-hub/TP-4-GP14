@@ -6,8 +6,8 @@ package Jframe;
 
 import Data.AlumnoData;
 import Data.MateriaData;
-import java.awt.List;
-import java.util.ArrayList;
+import java.util.HashSet;
+import javax.swing.JOptionPane;
 import tp.pkg4.gp14.Alumno;
 import tp.pkg4.gp14.Materia;
 
@@ -19,20 +19,29 @@ import tp.pkg4.gp14.Materia;
  *
  * @author carlo
  */
-public class menuInscripcion extends javax.swing.JInternalFrame {
+public final class menuInscripcion extends javax.swing.JInternalFrame {
 
     private AlumnoData ad;
     private MateriaData md;
+    
+    private HashSet<Alumno> estudiantes;
+    private HashSet<Materia> materias;
     /**
      * Creates new form menuInscripcion
      */
-    public menuInscripcion() {
+    public menuInscripcion(HashSet<Alumno> estudiantes, HashSet<Materia> materias) {
+        
+        this.estudiantes = estudiantes;
+        this.materias = materias;
+        
         initComponents();
         
         ad = new AlumnoData();
         md = new MateriaData();
         
-    
+        
+        llenarComboA();
+        llenarComboM();
    }
 
     /**
@@ -97,7 +106,7 @@ public class menuInscripcion extends javax.swing.JInternalFrame {
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
+                .addContainerGap(112, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(105, 105, 105))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -130,7 +139,7 @@ public class menuInscripcion extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jcbMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jBexit, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jBingresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -141,13 +150,16 @@ public class menuInscripcion extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jDesktopPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDesktopPane1))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -159,7 +171,22 @@ public class menuInscripcion extends javax.swing.JInternalFrame {
 
     private void jBingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBingresarActionPerformed
         // TODO add your handling code here:
-
+        
+        Alumno alu = (Alumno) jcbAlumno.getSelectedItem();
+        Materia mat = (Materia) jcbMateria.getSelectedItem();
+        
+        if (alu != null && mat != null) {
+            try {
+                ad.guardarA(alu);
+                md.guardarM(mat);
+                alu.agregarMaterias(mat);
+                JOptionPane.showMessageDialog(null, "Estudiante inscrito en la materia");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al inscribir estudiante");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un estudiante y una materia");
+        }
     }//GEN-LAST:event_jBingresarActionPerformed
 
 
@@ -174,6 +201,16 @@ public class menuInscripcion extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Materia> jcbMateria;
     // End of variables declaration//GEN-END:variables
 
-  
+    public void llenarComboA(){
+        for (Alumno alu : estudiantes) {
+            jcbAlumno.addItem(alu);
+        }
+    }
+    
+    public void llenarComboM(){
+        for (Materia mat : materias) {
+            jcbMateria.addItem(mat);
+        }
+    }
     
 }
