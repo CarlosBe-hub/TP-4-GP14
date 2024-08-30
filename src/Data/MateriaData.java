@@ -18,17 +18,26 @@ public class MateriaData {
     private final ArrayList<Materia> listaM = new ArrayList<>();
     
     public void guardarM(Materia a) {
-        a.setIdmateria(listaM.size());
+        if(a !=null){
+        a.setIdmateria(listaM.size()+1);
         listaM.add(a);
+            System.out.println("materia guardada "+a);
+    }else{
+            System.out.println("Error la materia es nula");
+        }
     }
     
     public ArrayList<Materia> obtenerM() {
-        return listaM;
+        return new ArrayList<>(listaM);
     }
     
     public void mostrarLista() {
+        if(listaM.isEmpty()){
+            System.out.println("no hay materias en la lista");
+        }else{
         for (Materia materia : listaM) {
-            System.out.println(materia.toString());
-        }
+            System.out.println(materia);
+        }   
     }
+}
 }

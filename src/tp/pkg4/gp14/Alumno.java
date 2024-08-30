@@ -24,8 +24,7 @@ public class Alumno {
         this.materias = new HashSet<>();
     }
 
-    public Alumno() {
-    }
+    
     
 
     public int getNrolegajo() {

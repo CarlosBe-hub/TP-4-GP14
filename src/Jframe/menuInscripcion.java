@@ -6,6 +6,7 @@ package Jframe;
 
 import Data.AlumnoData;
 import Data.MateriaData;
+import java.util.ArrayList;
 import java.util.HashSet;
 import javax.swing.JOptionPane;
 import tp.pkg4.gp14.Alumno;
@@ -30,14 +31,14 @@ public final class menuInscripcion extends javax.swing.JInternalFrame {
      * Creates new form menuInscripcion
      */
     public menuInscripcion(HashSet<Alumno> estudiantes, HashSet<Materia> materias) {
-        
+            
         this.estudiantes = estudiantes;
         this.materias = materias;
         
         initComponents();
         
         ad = new AlumnoData();
-        md = new MateriaData();
+        md = new MateriaData(); 
         
         
         llenarComboA();
@@ -183,6 +184,8 @@ public final class menuInscripcion extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Estudiante inscrito en la materia");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error al inscribir estudiante");
+                llenarComboA();
+                llenarComboM();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione un estudiante y una materia");
@@ -202,12 +205,14 @@ public final class menuInscripcion extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     public void llenarComboA(){
+        jcbAlumno.removeAllItems();
         for (Alumno alu : estudiantes) {
             jcbAlumno.addItem(alu);
         }
     }
     
     public void llenarComboM(){
+        jcbMateria.removeAllItems();
         for (Materia mat : materias) {
             jcbMateria.addItem(mat);
         }

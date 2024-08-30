@@ -18,19 +18,27 @@ public class AlumnoData {
     private final ArrayList<Alumno> listaA = new ArrayList<>();
 
     public void guardarA(Alumno a) {
+        if(a !=null){
         a.setNrolegajo(listaA.size());
         listaA.add(a);
         
-        System.out.println("");
+        System.out.println("alumno agregado");
+        }else{
+            System.out.println("No hay alumnos");
+        }
     }
 
     public ArrayList<Alumno> obtenerA() {
-        return listaA;
+        return new ArrayList<>(listaA);
     }
 
     public void mostrarLista() {
+        if(listaA.isEmpty()){
+            System.out.println("no hay alumnos en la lista");
+        }else{
         for (Alumno alumno : listaA) {
-            System.out.println(alumno.toString());
+            System.out.println(alumno);
+            }
         }
     }
     

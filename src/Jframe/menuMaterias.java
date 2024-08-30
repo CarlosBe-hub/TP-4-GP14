@@ -189,12 +189,13 @@ public class menuMaterias extends javax.swing.JInternalFrame {
         int anio = Integer.parseInt(jtAnio.getText());
         
         Materia M = new Materia(codigo, materia, anio);
-        MateriaData md = new MateriaData();
+        
         md.guardarM(M);
+        
         
         JOptionPane.showMessageDialog(this, "materia agregada: "+jtNommateria.getText());
     }//GEN-LAST:event_jSaveActionPerformed
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
