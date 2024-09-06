@@ -13,6 +13,7 @@ import tp.pkg4.gp14.Materia;
  * @author carlo
  */
 public class menuPrincipal extends javax.swing.JFrame {
+    
 public static HashSet<Alumno> estudiantes = new HashSet<>();
 public static HashSet<Materia> materias = new HashSet<>();
     /**

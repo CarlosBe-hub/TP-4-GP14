@@ -11,6 +11,7 @@ import java.util.HashSet;
 import javax.swing.JOptionPane;
 import tp.pkg4.gp14.Alumno;
 import tp.pkg4.gp14.Materia;
+import Jframe.menuPrincipal;
 
 
 
@@ -205,15 +206,15 @@ public final class menuInscripcion extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     public void llenarComboA(){
-        jcbAlumno.removeAllItems();
-        for (Alumno alu : estudiantes) {
+        //jcbAlumno.removeAllItems();
+        for (Alumno alu :  menuPrincipal.estudiantes) {
             jcbAlumno.addItem(alu);
         }
     }
     
     public void llenarComboM(){
-        jcbMateria.removeAllItems();
-        for (Materia mat : materias) {
+        //jcbMateria.removeAllItems();
+        for (Materia mat : menuPrincipal.materias) {
             jcbMateria.addItem(mat);
         }
     }

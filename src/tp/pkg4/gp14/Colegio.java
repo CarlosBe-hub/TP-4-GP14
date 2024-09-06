@@ -22,8 +22,8 @@ public class Colegio {
         Materia m2 = new Materia(2,"Matematicas",1);
         Materia m3 = new Materia(3,"Laboratorio 1",1);
         
-        Alumno a1 = new Alumno(1001,"Lopez"," Martin");
-        Alumno a2 = new Alumno(456,"Martinez "," Brenda");
+        Alumno a1 = new Alumno(1001,"Lopez","Martin");
+        Alumno a2 = new Alumno(456,"Martinez","Brenda");
         
         materia.add(m1);
         materia.add(m2);

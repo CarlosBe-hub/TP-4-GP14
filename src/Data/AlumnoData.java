@@ -8,6 +8,8 @@ import java.awt.List;
 import java.util.ArrayList;
 import java.util.HashSet;
 import tp.pkg4.gp14.Alumno;
+import Jframe.menuPrincipal;
+import java.util.Set;
 
 /**
  *
@@ -15,12 +17,12 @@ import tp.pkg4.gp14.Alumno;
  */
 public class AlumnoData {
     
-    private final ArrayList<Alumno> listaA = new ArrayList<>();
+    //private final ArrayList<Alumno> listaA = new ArrayList<>();
 
     public void guardarA(Alumno a) {
         if(a !=null){
-        a.setNrolegajo(listaA.size());
-        listaA.add(a);
+        a.setNrolegajo(1);
+        menuPrincipal.estudiantes.add(a);
         
         System.out.println("alumno agregado");
         }else{
@@ -28,15 +30,15 @@ public class AlumnoData {
         }
     }
 
-    public ArrayList<Alumno> obtenerA() {
-        return new ArrayList<>(listaA);
+    public Set<Alumno> obtenerA() {
+        return menuPrincipal.estudiantes;
     }
 
     public void mostrarLista() {
-        if(listaA.isEmpty()){
+        if( menuPrincipal.estudiantes.isEmpty()){
             System.out.println("no hay alumnos en la lista");
         }else{
-        for (Alumno alumno : listaA) {
+        for (Alumno alumno :  menuPrincipal.estudiantes) {
             System.out.println(alumno);
             }
         }
