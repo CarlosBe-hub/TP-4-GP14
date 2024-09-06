@@ -6,7 +6,6 @@ package Jframe;
 
 import Data.AlumnoData;
 import Data.MateriaData;
-import java.util.ArrayList;
 import java.util.HashSet;
 import javax.swing.JOptionPane;
 import tp.pkg4.gp14.Alumno;

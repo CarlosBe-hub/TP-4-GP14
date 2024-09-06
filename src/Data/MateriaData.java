@@ -5,9 +5,12 @@
 package Data;
 
 
+import Jframe.menuPrincipal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import tp.pkg4.gp14.Materia;
+import Jframe.menuPrincipal;
+import java.util.Set;
 
 /**
  *
@@ -15,27 +18,27 @@ import tp.pkg4.gp14.Materia;
  */
 public class MateriaData {
     
-    private final ArrayList<Materia> listaM = new ArrayList<>();
+    
     
     public void guardarM(Materia a) {
         if(a !=null){
-        a.setIdmateria(listaM.size()+1);
-        listaM.add(a);
+        a.setIdmateria(2);
+        menuPrincipal.materias.add(a);
             System.out.println("materia guardada "+a);
     }else{
             System.out.println("Error la materia es nula");
         }
     }
     
-    public ArrayList<Materia> obtenerM() {
-        return new ArrayList<>(listaM);
+    public Set<Materia> obtenerM() {
+        return menuPrincipal.materias;
     }
     
     public void mostrarLista() {
-        if(listaM.isEmpty()){
+        if(menuPrincipal.materias.isEmpty()){
             System.out.println("no hay materias en la lista");
         }else{
-        for (Materia materia : listaM) {
+        for (Materia materia : menuPrincipal.materias) {
             System.out.println(materia);
         }   
     }

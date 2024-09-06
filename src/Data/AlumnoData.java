@@ -4,9 +4,7 @@
  */
 package Data;
 
-import java.awt.List;
-import java.util.ArrayList;
-import java.util.HashSet;
+
 import tp.pkg4.gp14.Alumno;
 import Jframe.menuPrincipal;
 import java.util.Set;
@@ -17,7 +15,7 @@ import java.util.Set;
  */
 public class AlumnoData {
     
-    //private final ArrayList<Alumno> listaA = new ArrayList<>();
+   
 
     public void guardarA(Alumno a) {
         if(a !=null){
