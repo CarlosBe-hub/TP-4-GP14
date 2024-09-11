@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import tp.pkg4.gp14.Alumno;
 import tp.pkg4.gp14.Materia;
 import Jframe.menuPrincipal;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -21,6 +22,8 @@ import Jframe.menuPrincipal;
  * @author carlo
  */
 public final class menuInscripcion extends javax.swing.JInternalFrame {
+    
+    private DefaultTableModel modelo=new DefaultTableModel();
 
     private AlumnoData ad;
     private MateriaData md;
@@ -31,6 +34,8 @@ public final class menuInscripcion extends javax.swing.JInternalFrame {
      * Creates new form menuInscripcion
      */
     public menuInscripcion(HashSet<Alumno> estudiantes, HashSet<Materia> materias) {
+        
+        
             
         this.estudiantes = estudiantes;
         this.materias = materias;
@@ -43,6 +48,8 @@ public final class menuInscripcion extends javax.swing.JInternalFrame {
         
         llenarComboA();
         llenarComboM();
+        
+        armarCombo();
    }
 
     /**
@@ -60,6 +67,8 @@ public final class menuInscripcion extends javax.swing.JInternalFrame {
         jcbAlumno = new javax.swing.JComboBox<>();
         jBingresar = new javax.swing.JButton();
         jBexit = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtRegistro = new javax.swing.JTable();
 
         jDesktopPane1.setBackground(new java.awt.Color(51, 153, 255));
 
@@ -94,6 +103,19 @@ public final class menuInscripcion extends javax.swing.JInternalFrame {
             }
         });
 
+        jtRegistro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jtRegistro);
+
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -101,15 +123,24 @@ public final class menuInscripcion extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jcbAlumno, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBingresar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBexit, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap(112, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(105, 105, 105))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addGap(24, 24, 24)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jcbMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -118,33 +149,34 @@ public final class menuInscripcion extends javax.swing.JInternalFrame {
                         .addGap(82, 82, 82)
                         .addComponent(jBexit))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addGap(24, 24, 24)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcbMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcbAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(247, 247, 247)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(76, 76, 76)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jcbAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jcbMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jBexit, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jBingresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(56, 56, 56))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jcbAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jcbMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jBexit, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jBingresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(56, 56, 56))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -158,7 +190,7 @@ public final class menuInscripcion extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -172,24 +204,13 @@ public final class menuInscripcion extends javax.swing.JInternalFrame {
 
     private void jBingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBingresarActionPerformed
         // TODO add your handling code here:
+       
+        Alumno selectA = (Alumno) jcbAlumno.getSelectedItem();
+        Materia selectM = (Materia) jcbMateria.getSelectedItem();
         
-        Alumno alu = (Alumno) jcbAlumno.getSelectedItem();
-        Materia mat = (Materia) jcbMateria.getSelectedItem();
+        jtRegistro.getModel();
         
-        if (alu != null && mat != null) {
-            try {
-                ad.guardarA(alu);
-                md.guardarM(mat);
-                alu.agregarMaterias(mat);
-                JOptionPane.showMessageDialog(null, "Estudiante inscrito en la materia");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error al inscribir estudiante");
-                llenarComboA();
-                llenarComboM();
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Seleccione un estudiante y una materia");
-        }
+        modelo.addRow(new Object[]{selectA.getNombre(), selectM.getNombre(), "", ""});
     }//GEN-LAST:event_jBingresarActionPerformed
 
 
@@ -200,8 +221,10 @@ public final class menuInscripcion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<Alumno> jcbAlumno;
     private javax.swing.JComboBox<Materia> jcbMateria;
+    private javax.swing.JTable jtRegistro;
     // End of variables declaration//GEN-END:variables
 
     public void llenarComboA(){
@@ -217,5 +240,12 @@ public final class menuInscripcion extends javax.swing.JInternalFrame {
             jcbMateria.addItem(mat);
         }
     }
+    
+    private void armarCombo(){
+    
+    modelo.addColumn("Alumnos");
+    modelo.addColumn("Materias");
+    jtRegistro.setModel(modelo);
+   }
     
 }

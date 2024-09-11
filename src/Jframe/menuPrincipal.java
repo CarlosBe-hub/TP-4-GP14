@@ -58,9 +58,9 @@ public static HashSet<Materia> materias = new HashSet<>();
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(escritorioLayout.createSequentialGroup()
-                .addGap(256, 256, 256)
+                .addGap(365, 365, 365)
                 .addComponent(jLabel1)
-                .addContainerGap(295, Short.MAX_VALUE))
+                .addContainerGap(421, Short.MAX_VALUE))
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
